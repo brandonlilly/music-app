@@ -1,0 +1,12 @@
+<%= link_to 'Bands', bands_url %> / <%= link_to @track.band.name, @track.band %> / <%= link_to @track.album.title, @track.album %> /
+
+<h1><%= @track.title %> <%= "(Bonus)" if @track.bonus %></h1>
+
+<% unless @track.lyrics.empty? %>
+  Lyrics:<br>
+  <%= @track.lyrics %>
+<% end %>
+
+<br><br>
+<%= button_to 'Edit song', edit_track_url(@track), method: :get %>
+<%= button_to 'Delete song', track_url(@track), method: :delete %>

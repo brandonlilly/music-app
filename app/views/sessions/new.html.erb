@@ -1,0 +1,15 @@
+<h1>Log in</h1>
+
+<form action='<%= sessions_url %>' method="post">
+  <%= csrf_input %>
+
+  Email:<br>
+  <input type="text" name="user[email]" value="<%= @user.email %>" placeholder="example@example.com">
+
+  <br><br>
+  Password:<br>
+  <input type="password" name="user[password]">
+
+  <br><br>
+  <input type="submit" value="Log in">
+</form>

@@ -1,0 +1,9 @@
+<ul>
+  <% [:warnings, :errors, :messages].each do |type| %>
+    <% [ flash[type] ].flatten.each do |message| %>
+      <% unless message.nil? %>
+        <li><%= message %>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

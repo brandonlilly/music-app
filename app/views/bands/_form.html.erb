@@ -1,0 +1,18 @@
+<%
+title, url, method = if band.persisted?
+  ['Edit', band_url(band), :patch]
+else
+  ['Create', bands_url, :post]
+end
+%>
+
+<form action='<%= url %>' method="post">
+  <%= csrf_input %>
+  <%= set_form_method method %>
+
+  Name:<br>
+  <input type="text" name="band[name]" value="<%= @band.name %>">
+
+  <br><br>
+  <input type="submit" value="<%= title %> band">
+</form>

@@ -1,0 +1,34 @@
+<%
+title, url, method = if album.persisted?
+  ['Edit', album_url(album), :patch]
+else
+  ['Create', albums_url, :post]
+end
+%>
+
+<form action='<%= url %>' method="post">
+  <%= csrf_input %>
+  <%= set_form_method method %>
+
+  Band:<br>
+  <select name='album[band_id]'>
+    <option></option>
+    <% Band.all.each do |band| %>
+      <option value='<%= band.id %>'
+        <%= 'selected' if @album.band_id == band.id %>>
+        <%= band.name %>
+      </option>
+    <% end %>
+  </select>
+
+  <br><br>
+  Title:<br>
+  <input type="text" name="album[title]" value="<%= @album.title %>">
+
+  <br><br>
+  <label><input type='radio' name='album[live]' value='false' <%= 'checked' unless @album.live %>>Studio</label>
+  <label><input type='radio' name='album[live]' value='true' <%= 'checked' if @album.live %>>Live</label>
+
+  <br><br>
+  <input type="submit" value="<%= title %> album">
+</form>

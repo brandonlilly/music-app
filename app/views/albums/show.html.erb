@@ -1,0 +1,12 @@
+<%= link_to 'Bands', bands_url %> / <%= link_to @album.band.name, @album.band %> /
+
+<h1> <%= @album.title %> <%= '(Live)' if @album.live %></h1>
+
+<%= render @album.tracks %>
+
+<br>
+<%= link_to 'New track', new_track_url(@album) %>
+
+<br><br>
+<%= button_to 'Edit album', edit_album_url(@album), method: :get %>
+<%= button_to 'Delete album', album_url(@album), method: :delete %>
